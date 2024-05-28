@@ -1,0 +1,10 @@
+- Buenas, me llamo Mikel Urlezaga y soy Desarrollador y Diseñador de aplicaciones web
+- Tengo experiencia en
+- JavaScript y el Framework de Vue
+- PHP y el Framework de Laravel
+- HTML 5
+- CSS 3
+- SharePoint
+- Experiencia en Sistemas informaticos
+- En redes
+- Practicas hechas en el departamento de Sistemas Informaticos de ALBACORA
