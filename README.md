@@ -1,4 +1,4 @@
-- Buenas, me llamo Mikel Urlezaga y soy Desarrollador y Diseñador de aplicaciones web
+- Buenas, me llamo Mikel Urlezaga, soy Desarrollador y Diseñador de aplicaciones web
 - Tengo experiencia en
 - JavaScript y el Framework de Vue
 - PHP y el Framework de Laravel
