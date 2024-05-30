@@ -1,0 +1,21 @@
+body {
+    background-color: #F7B2B7;
+}
+
+#titulo{
+    text-align: left;
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+#middle{
+    margin-left: 10%;
+    margin-right: 10%;
+
+    background: linear-gradient(45deg, #4B296B, #4C2C72, #FAB2EA);
+    color: white;
+    padding: 150px;
+    text-align: center;
+    border-radius: 8px;
+}
