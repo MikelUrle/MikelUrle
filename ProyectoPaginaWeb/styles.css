@@ -9,6 +9,12 @@ body {
     margin-left: 2%;
 }
 
+#blackhr{
+    padding: 0.2%;
+    background-color: black;
+    margin-bottom: 1%;
+}
+
 #middle{
     margin-left: 10%;
     margin-right: 10%;
