@@ -1,5 +1,5 @@
 body {
-    background-color: #F7B2B7;
+    background: linear-gradient(45deg, #4B296B, #4C2C72, #FAB2EA);
 }
 
 #titulo{
@@ -9,17 +9,30 @@ body {
     margin-left: 2%;
 }
 
+#titulo-texto{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;          
+    font-weight: bold;       
+    color: #333;               
+    margin: 20px 0;            
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 #blackhr{
-    padding: 0.2%;
+    padding: 0.4%;
     background-color: black;
-    margin-bottom: 1%;
+}
+
+#fondo-middle{
+    background-color: #A9B4C2;
+    padding-top: 5%;
 }
 
 #middle{
     margin-left: 10%;
     margin-right: 10%;
 
-    background: linear-gradient(45deg, #4B296B, #4C2C72, #FAB2EA);
+    background-color: black;
     color: white;
     padding: 150px;
     text-align: center;
