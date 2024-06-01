@@ -26,6 +26,27 @@ body {
 #fondo-middle{
     background-color: #A9B4C2;
     padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#textoDescr{
+    margin-left: 10%;
+    padding-bottom: 4%;
+    font-family: Roboto;
+    font-size:larger;
+}
+
+h1 {
+    font-size: 400%;
+    color: #4B296B;
+}
+
+h2 {
+    color:#4B296B;
+}
+
+p {
+    font-size: larger;
 }
 
 #middle{
