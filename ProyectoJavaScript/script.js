@@ -40,7 +40,7 @@ function pillarDatos() {
           const userEmail = document.getElementById('userEmail');
           const userTelefono = document.getElementById('userTelefono');
           const userUbi = document.getElementById('userUbi');
-          const userTexto = document.getElementById('userText');
+          const userTexto = document.getElementById('userTexto');
 
           userDataDiv.innerHTML = `
             <div class="card">
@@ -48,8 +48,8 @@ function pillarDatos() {
             </div>
           `;
 
-          userName.innerHTML = `
-            <h5 class="nombre">${user.name.first} ${user.name.last}</h5>
+          userTexto.innerHTML = `
+            <h5>${user.name.first} ${user.name.last}</h5> <p>es un profesional del sector con amplia experiencia y formacion que hace que sea uno de los mejores en lo que hace.</p>
           `;
 
           userEmail.innerHTML = `
