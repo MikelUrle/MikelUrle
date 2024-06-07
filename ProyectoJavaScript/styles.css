@@ -1,3 +1,9 @@
+body, html {
+  height: 97%;
+  margin-top: 0%;
+  font-family: Arial, sans-serif;
+}
+
 /* Header */
 
 #header{
@@ -28,14 +34,54 @@
   font-size: 550%;
 }
 
+#middle{
+  background-color: black;
+  height: 60%;
+}
+
+.textoMiddle{
+  color: white;
+  margin-left: 10%;
+  margin-right: 7%;
+  margin-top: 0%;
+  padding-top: 2%;
+
+  font-family: Roboto;
+  font-size: large;
+}
+
+
+#footer{
+  text-align: center;
+  display: flex;
+  height: 15.3%;
+}
+
+
+#footer-color1 {
+  flex: 1;
+  background: linear-gradient(to right, white, #9C89B8);
+}
+
+#footer-color {
+  flex: 2;
+  background-color: #9C89B8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer-color2 {
+  flex: 1;
+  background: linear-gradient(to left, white, #9C89B8);
+}
+
+#footerHeader{
+  font-size: 550%;
+}
+
 /* Menu */
 
-body, html {
-    height: 100%;
-    margin-top: 0%;
-    font-family: Arial, sans-serif;
-  }
-  
   .menu-contenedor {
     position: fixed;
     top: 0;
@@ -106,3 +152,48 @@ body, html {
   li:hover{
     background-color: #8963BA;
   }
+
+
+.gente{
+  margin-left: 30%;
+}
+
+.botonUsuario{
+  margin-left: 15%;
+  margin-top: 2%;
+  padding: 1%;
+  border-radius: 25px;
+  font-size: medium;
+  font-family: Roboto;
+}
+
+:hover.botonUsuario{
+  background-color: #9C89B8;
+}
+
+.personaTitulo{
+  margin-top: 0%;
+  padding-bottom: 2%;
+  background-color: #7A52BA;
+}
+
+.personaTexto{
+  margin-left: 10%;
+  padding-top: 5%;
+  font-size: 250%;
+}
+
+
+/* Usuarios */
+
+.card-img-top{
+  margin-left: -25%;
+  margin-top: 5%;
+  height: 25vh;
+}
+
+.nombre{
+  font-size: 200%;
+  margin-left: -25%;
+}
+
