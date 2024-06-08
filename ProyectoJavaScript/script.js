@@ -21,14 +21,7 @@ function cerrarMenu() {
 }
 
 
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
-document.getElementById('fetchButton').addEventListener('click', pillarDatos);
+
 
 function pillarDatos() {
   fetch('https://randomuser.me/api/')
@@ -49,7 +42,7 @@ function pillarDatos() {
           `;
 
           userTexto.innerHTML = `
-            <h5>${user.name.first} ${user.name.last}</h5> <p>es un profesional del sector con amplia experiencia y formacion que hace que sea uno de los mejores en lo que hace.</p>
+            <h5 style="font-size: 120%">${user.name.first} ${user.name.last}</h5> <p style="font-size: 80%; font-family: Roboto; margin-top: -4%;" >Es un profesional del sector con amplia experiencia y formacion que haciendo que sea uno de los mejores en su trabajo.</p>
           `;
 
           userEmail.innerHTML = `
@@ -68,3 +61,8 @@ function pillarDatos() {
           console.error('Error al obtener los datos:', error);
       });
 }
+
+
+document.getElementById('contactForm').addEventListener('submit', function(event){
+  console.log("buenas");
+});

@@ -10,7 +10,33 @@
 <body>
 
 
-    <button id="fetchButton" onclick="pillarDatos()" class="btn btn-primary">Obtener Usuario Aleatorio</button>
+    <div id="formulario" class="container mt-5">
+        <h1 class="formularioTexto">Contacta con Nosotros</h1>
+        <form id="contactForm">
+            <div class="formularioSeparacion">
+                <label for="name" class="form-label formularioTexto">Nombre</label>
+                <input type="text" class="form-control " id="name" name="name" required>
+            </div>
+            <div class="formularioSeparacion">
+                <label for="email" class="form-label formularioTexto">Correo Electrónico</label>
+                <input type="email" class="form-control " id="email" name="email" required>
+            </div>
+            <div class="formularioSeparacion">
+                <label for="subject" class="form-label formularioTexto">Asunto</label>
+                <input type="text" class="form-control " id="subject" name="subject" required>
+            </div>
+            <div class="formularioSeparacion">
+                <label for="message" class="form-label formularioTexto">Mensaje</label>
+                <textarea class="form-control " id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary formularioSeparacion">Enviar</button>
+        </form>
+    </div>
+
+
+    <div id="formResponse">
+
+    </div>
 
 
     <div id="menu">
