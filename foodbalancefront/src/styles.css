@@ -2,16 +2,27 @@ body, html {
     height: 97%;
     margin-top: 0%;
     font-family: Arial, sans-serif;
+    background-color: #B2B5E0;
   }
   
   /* Header */
   
   #header{
-    text-align: center;
-    display: flex;
+    text-align: right;
+    margin-right: 5%;
+    background-color: #B2B5E0;
+    background: linear-gradient(to right, #B2B5E0, #8963BA);
+    padding: 1%;
+    font-size: 4em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, color 0.3s ease;
   }
   
-  
+  #headerAll{
+    
+  }
+
   #header-color1 {
     flex: 1;
     background: linear-gradient(to right, white, #9C89B8);
@@ -34,52 +45,6 @@ body, html {
     font-size: 550%;
   }
   
-  #middle{
-    background-color: black;
-    height: 60%;
-  }
-  
-  .textoMiddle{
-    color: white;
-    margin-left: 10%;
-    margin-right: 7%;
-    margin-top: 0%;
-    padding-top: 2%;
-  
-    font-family: Roboto;
-    font-size: large;
-  }
-  
-  
-  #footer{
-    text-align: center;
-    display: flex;
-    height: 15.3%;
-  }
-  
-  
-  #footer-color1 {
-    flex: 1;
-    background: linear-gradient(to right, white, #9C89B8);
-  }
-  
-  #footer-color {
-    flex: 2;
-    background-color: #9C89B8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #footer-color2 {
-    flex: 1;
-    background: linear-gradient(to left, white, #9C89B8);
-  }
-  
-  #footerHeader{
-    font-size: 550%;
-  }
-  
   /* Menu */
   
     .menu-contenedor {
@@ -88,7 +53,7 @@ body, html {
       left: 0;
       height: 100%;
       width: 100px; 
-      background-color: #9C89B8;
+      background-color: #8963BA;
       overflow-x: hidden;
       transition: 0.5s;
     }
@@ -146,73 +111,28 @@ body, html {
     }
     
     .menu-items a:hover {
-      color: #8963BA; 
+      color: #9C89B8; 
     }
   
     li:hover{
-      background-color: #8963BA;
+      background-color: #9C89B8;
     }
-  
-  
-  .gente{
-    margin-left: 30%;
-  }
-  
-  .botonUsuario{
-    margin-left: 15%;
-    margin-top: 2%;
-    padding: 1%;
-    border-radius: 25px;
-    font-size: medium;
-    font-family: Roboto;
-  }
-  
-  :hover.botonUsuario{
-    background-color: #9C89B8;
-  }
-  
-  .personaTitulo{
-    margin-top: 0%;
-    margin-right: -10%;
-    padding-bottom: 2%;
-    background-color: #7A52BA;
-  }
-  
-  .personaTexto{
-    margin-left: 10%;
-    padding-top: 5%;
-    font-size: 250%;
-  }
-  
-  
-  /* Usuarios */
-  
-  .card-img-top{
-    margin-left: -25%;
-    margin-top: 5%;
-    height: 25vh;
-  }
-  
-  .nombre{
-    font-size: 200%;
-    margin-left: -25%;
-  }
-  
-  /* Contacto */
-  
-  #formulario{
-    margin-left: 20%;
-    margin-right: 40%;
-    background-color: #7A52BA;
-  }
-  
-  .formularioTexto{
-    margin-top: 3%;
-    margin-bottom: 0%;
-    padding: 10%;
-  }
-  
-  .formularioSeparacion{
-    margin-top: 4%;
-  }
-  
+
+
+    /* Home */
+
+    #medioHome{
+      background-color: #8963BA;
+      height: 650px;
+      width: 1400px;
+      margin-left: 15%;
+      margin-top: 2%;
+      border-radius: 2%;
+    }
+
+    #selectorHomeCategoria{
+      position: fixed;
+      margin-top: 5%;
+      margin-left: 5%;
+      width: 20%;
+    }

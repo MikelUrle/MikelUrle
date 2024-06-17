@@ -1,11 +1,6 @@
 <template>
-  <div class="home">
-    <!-- El menu -->
-
-
-    <!-- El header -->
-
-    <h1>FoodBalance</h1>
+  <div id="headerAll">
+    <h1 id="header">FoodBalance</h1>
   </div>
 </template>
 

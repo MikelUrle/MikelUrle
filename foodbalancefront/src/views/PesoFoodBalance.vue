@@ -1,5 +1,6 @@
 <script>
 import MenuFoodBalance from "../components/MenuFoodBalance.vue";
+import HeaderFoodBalance from "../components/HeaderFoodBalance.vue";
 
 export default {
     data() {
@@ -8,7 +9,8 @@ export default {
         };
     },
     components: {
-      MenuFoodBalance
+      MenuFoodBalance,
+      HeaderFoodBalance
     },
     methods:{
 
@@ -17,4 +19,5 @@ export default {
 
 <template>
   <MenuFoodBalance />
+  <HeaderFoodBalance />
 </template>
