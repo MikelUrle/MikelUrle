@@ -133,6 +133,57 @@ body, html {
     #selectorHomeCategoria{
       position: fixed;
       margin-top: 5%;
-      margin-left: 5%;
+      margin-left: 4%;
+      width: 20%;
+    }
+
+    #gramosHome{
+      position: fixed;
+      margin-top: 20%;
+      margin-left: 4%;
+      width: 20%;
+    }
+
+    #botonAñadirHome{
+      position: fixed;
+      margin-top: 25%;
+      margin-left: 10%;
+      width: 7%;
+      height: 7%;
+      background-color: #B2B5E0;
+    }
+
+    #botonQuitarHome{
+      position: fixed;
+      margin-top: 23%;
+      margin-left: 60%;
+      background-color: #B2B5E0;
+    }
+
+    #botonQuitarTodoHome{
+      position: fixed;
+      margin-top: 23%;
+      margin-left: 52%;
+      background-color: #B2B5E0;
+    }
+
+    #tablaHome{
+      position: fixed;
+      margin-top: 5%;
+      margin-left: 26%;
+      width: 20%;
+    }
+
+    #textAreaHome{
+      position: fixed;
+      margin-top: 5%;
+      margin-left: 48%;
+      width: 20%;
+    }
+
+    #textTotalHome{
+      position: fixed;
+      margin-top: 27%;
+      margin-left: 48%;
       width: 20%;
     }
