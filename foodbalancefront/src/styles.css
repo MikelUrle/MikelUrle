@@ -187,3 +187,14 @@ body, html {
       margin-left: 48%;
       width: 20%;
     }
+
+    /* Comida */
+
+    #medioComida{
+      background-color: #8963BA;
+      height: 650px;
+      width: 1400px;
+      margin-left: 15%;
+      margin-top: 2%;
+      border-radius: 2%;
+    }

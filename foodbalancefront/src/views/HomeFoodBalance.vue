@@ -43,15 +43,15 @@ export default {
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Mark</td>
+          <td>Patatas</td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Jacob</td>
+          <td>Zanahoria</td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
+          <td colspan="2">Lechuga</td>
         </tr>
       </tbody>
     </table>
