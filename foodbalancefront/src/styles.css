@@ -198,3 +198,26 @@ body, html {
       margin-top: 2%;
       border-radius: 2%;
     }
+
+    #dropdownCategoriaComida{
+      margin-top: 10%;
+    }
+
+    #tablaComida{
+      margin-top: 10%;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    p.text-start{
+      margin-top: 0.5%;
+      margin-bottom: 0.5%;
+
+      font-size: larger;
+    }
+
+    #botonAñadirComida{
+      margin-top: 85%;
+      width: 50%;
+      background-color: #B2B5E0;
+    }
