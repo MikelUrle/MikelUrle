@@ -74,3 +74,68 @@ alert( message );
 // Si es cierto, devuelve '¡Hola!'. De lo contrario, continúa con la expresión que está después de los dos puntos siguientes “:”, la cual revisa si age < 100.
 // Si es cierto, devuelve '¡Felicidades!'. De lo contrario, continúa a la expresión que está después de los dos puntos “:”, la cual devuelve '¡Qué edad tan inusual!'.
 
+
+// Bucle while
+
+while (condition) {
+  // código
+  // llamado "cuerpo del bucle"
+}
+
+// Mientras la condición condition sea verdadera, el código del cuerpo del bucle será ejecutado.
+
+let i = 0;
+while (i < 3) { // muestra 0, luego 1, luego 2
+  alert( i );
+  i++;
+}
+
+// Cada ejecución del cuerpo del bucle se llama iteración.
+
+// Por ejemplo, una manera más corta de escribir while (i != 0) es while (i):
+
+
+// DO While
+
+do {
+  // cuerpo del bucle
+} while (condition);
+
+// El bucle primero ejecuta el cuerpo, luego comprueba la condición, y, mientras sea un valor verdadero, la ejecuta una y otra vez.
+
+
+// For
+
+for (begin; condition; step) { // (comienzo, condición, paso)
+  // ... cuerpo del bucle ...
+}
+
+for (let i = 0; i < 3; i++) { // muestra 0, luego 1, luego 2
+  alert(i);
+}
+
+// comienzo	let i = 0	Se ejecuta una vez al comienzo del bucle.
+// condición	i < 3	Comprobada antes de cada iteración del bucle. Si es falsa, el bucle finaliza.
+// cuerpo	alert(i)	Se ejecuta una y otra vez mientras la condición sea verdadera.
+// paso	i++	Se ejecuta después del cuerpo en cada iteración.
+
+if (!value) "break"; // (*) sin " " para for o el while
+
+// La directiva continue es una “versión más ligera” de break. 
+// No detiene el bucle completo. En su lugar, detiene la iteración actual y fuerza al bucle a comenzar una nueva (si la condición lo permite).
+
+for (let i = 0; i < 10; i++) {
+
+  // si es verdadero, saltar el resto del cuerpo
+  if (i % 2 == 0) continue;
+
+  alert(i); // 1, luego 3, 5, 7, 9
+}
+
+
+// Una etiqueta es un identificador con un signo de dos puntos “:” antes de un bucle:
+
+// labelName: for (...) {
+//   ...
+// }
+
