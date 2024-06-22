@@ -13,6 +13,7 @@ export default {
             { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',}
           ],
           datos: [],
+          datosCategorias: []
         };
     },
     components: {
@@ -54,9 +55,35 @@ export default {
         }
       },
 
+
+      async sacarCategorias(){
+
+        try {
+
+          const response = await fetch('http://localhost/MikelUrle/foodbalanceback/public/api/CategoriasComida', {
+              method: 'GET',
+              mode: 'cors'
+          });
+
+          const data = await response.json();
+          console.log(data);
+
+          this.datosCategorias = [];
+
+          for (let i = 0; i < data.length; i++) {
+              this.datosCategorias.push(data[i]);
+          }
+
+
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+        },
+
     },
     mounted: function() {
       this.fetchData();
+      this.sacarCategorias();
     }};
 </script>
 
@@ -76,9 +103,9 @@ export default {
               Selecciona Categoria
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li v-for="item in datosCategorias" :key="item">
+                <a class="dropdown-item" href="#">{{ item }}</a>
+              </li>
             </ul>
           </div>
 
@@ -91,7 +118,7 @@ export default {
                   <th scope="col">Calorias</th>
                   <th scope="col">Proteina</th>
                   <th scope="col">Grasa</th>
-                  <th scope="col">H.C.</th>
+                  <th scope="col">C.H.</th>
                   <th scope="col">Fibra</th>
                   <th scope="col">Extra</th>
                 </tr>
