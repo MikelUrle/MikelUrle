@@ -22,7 +22,7 @@ class ComidaController extends Controller
             'Calorias' => $datos["Calorias"],
             'Proteina' => $datos["Proteina"],
             'Grasa' => $datos["Grasa"],
-            'HC' => $datos["HC"],
+            'CH' => $datos["CH"],
             'Fibra' => $datos["Fibra"],
             'Extra' => $datos["Extra"],
             'Categoria' => $datos["Categoria"]
@@ -32,7 +32,7 @@ class ComidaController extends Controller
     public function editarComida(Request $request){
         $datos = $request->json()->all();
         
-        $emaitza = Comida::where('id', $datos["id"])->update(['Nombre' => $datos['Nombre'], 'Calorias' => $datos['Calorias'],'Proteina' => $datos['Proteina'],'Grasa' => $datos['Grasa'],'HC' => $datos['HC'],'Fibra' => $datos['Fibra'],'Extra' => $datos['Extra'],'Categoria' => $datos['Categoria']]);
+        $emaitza = Comida::where('id', $datos["id"])->update(['Nombre' => $datos['Nombre'], 'Calorias' => $datos['Calorias'],'Proteina' => $datos['Proteina'],'Grasa' => $datos['Grasa'],'CH' => $datos['CH'],'Fibra' => $datos['Fibra'],'Extra' => $datos['Extra'],'Categoria' => $datos['Categoria']]);
        
         if ($emaitza) {
            return response()->json(['message' => 'Datuak aldatu dira.'], 200);
@@ -41,7 +41,7 @@ class ComidaController extends Controller
        }
    }
 
-   public function borrarComida(Request $request){
+    public function borrarComida(Request $request){
         $datos = $request->json()->all();
        // Buscar la comida por ID
        $comida = Comida::find($datos["id"]);
@@ -56,5 +56,14 @@ class ComidaController extends Controller
 
        // Devolver una respuesta exitosa
        return response()->json(['message' => 'Comida eliminada exitosamente.'], 200);
-   }
+    }
+
+    public function categoriaComida()
+    {
+        $categorias = Comida::distinct()
+                            ->pluck('categoria');
+
+        return $categorias;
+    }
+
 }

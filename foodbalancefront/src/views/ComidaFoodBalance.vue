@@ -11,7 +11,8 @@ export default {
             { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',},
             { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',},
             { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',}
-          ]
+          ],
+          datos: [],
         };
     },
     components: {
@@ -20,6 +21,42 @@ export default {
     },
     methods:{
 
+      async fetchData(){
+
+        try {
+          // el fetch que hace la llamada al back para recoger los datos, usando el metodo 'GET' y el modo 'cors'
+          const response = await fetch('http://localhost/MikelUrle/foodbalanceback/public/api/Comida', {
+              method: 'GET',
+              mode: 'cors'
+          });
+        
+          const data = await response.json();
+          console.log(data);
+        
+          this.datos = [];
+
+          for (let i = 0; i < data.length; i++) {
+              this.datos.push({
+                  "id": data[i].id,
+                  "Nombre": data[i].Nombre,
+                  "Calorias": data[i].Calorias,
+                  "Proteina": data[i].Proteina,
+                  "Grasa": data[i].Grasa,
+                  "CH": data[i].CH,
+                  "Fibra": data[i].Fibra,
+                  "Extra": data[i].Extra,
+                  "Categoria": data[i].Categoria
+              });
+          }
+          console.log(this.datos);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      },
+
+    },
+    mounted: function() {
+      this.fetchData();
     }};
 </script>
 
@@ -60,15 +97,15 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(person, index) in people" :key="index">
+                <tr v-for="(dato, index) in datos" :key="index">
                   <th scope="row">{{ index + 1 }}</th>
-                  <td>{{ person.nombre }}</td>
-                  <td>{{ person.calorias }}</td>
-                  <td>{{ person.proteina }}</td>
-                  <td>{{ person.grasa }}</td>
-                  <td>{{ person.hc }}</td>
-                  <td>{{ person.fibra }}</td>
-                  <td>{{ person.extra }}</td>
+                  <td>{{ dato.Nombre }}</td>
+                  <td>{{ dato.Calorias }}</td>
+                  <td>{{ dato.Proteina }}</td>
+                  <td>{{ dato.Grasa }}</td>
+                  <td>{{ dato.CH }}</td>
+                  <td>{{ dato.Fibra }}</td>
+                  <td>{{ dato.Extra }}</td>
                 </tr>
               </tbody>
             </table>

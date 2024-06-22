@@ -28,3 +28,5 @@ Route::post('/MeterComida', [ComidaController::class, 'meterComida']);
 Route::put('/CambiarComida', [ComidaController::class, 'editarComida']);
 
 Route::delete('/BorrarComida', [ComidaController::class, 'borrarComida']);
+
+Route::get('/CategoriasComida', [ComidaController::class, 'categoriaComida']);
