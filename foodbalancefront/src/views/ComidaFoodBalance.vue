@@ -13,6 +13,7 @@ export default {
             { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',}
           ],
           datos: [],
+          comida: [],
           datosCategorias: []
         };
     },
@@ -35,6 +36,7 @@ export default {
           console.log(data);
         
           this.datos = [];
+          this.comida = [];
 
           for (let i = 0; i < data.length; i++) {
               this.datos.push({
@@ -49,7 +51,9 @@ export default {
                   "Categoria": data[i].Categoria
               });
           }
-          console.log(this.datos);
+
+          this.comida = this.datos;
+
         } catch (error) {
           console.error('Error al obtener los datos:', error);
         }
@@ -80,6 +84,47 @@ export default {
         }
         },
 
+        filtroCategorias(datoCat){
+          this.comida = [];
+          for (let index = 0; index < this.datos.length; index++) {
+            if (this.datos[index].Categoria == datoCat) {
+              this.comida.push(this.datos[index]);
+            }
+          }
+
+        },
+
+        validarNumeros(event) {
+          const input = event.target.value;
+          // Filtrar solo números (0-9) y eliminar todo lo demás
+          const numeros = input.replace(/[^0-9]/g, '');
+          event.target.value = numeros;
+        },
+
+        async añadirComida(){
+          if (this.nombre==undefined || this.calorias==undefined || this.proteina==undefined || this.grasa==undefined || this.ch==undefined || this.fibra==undefined || this.extra==undefined || this.categoria==undefined) {
+            alert("datuak falta dira");
+          } else {
+            var js = JSON.stringify({"Nombre": this.nombre, "Calorias": this.calorias, "Proteina": this.proteina, "Grasa": this.grasa, "CH": this.ch, "Fibra": this.fibra, "Extra": this.extra, "Categoria": this.categoria}); 
+            fetch('http://localhost/MikelUrle/foodbalanceback/public/api/MeterComida', {
+                method: 'POST',
+                body: js,
+                mode: 'cors'
+            })
+            .then(function (response) {
+                    return response.text();
+            })
+            .then(data=>{
+                console.log(data);
+            })
+            .catch(error => {
+                // por si hay algun error por los constraints
+                console.log("Erregistro hau beste taula batean erabiltzen ari da, beraz, ezin da ezabatu" + error);
+            });
+          }
+          window.location.reload();
+        },
+
     },
     mounted: function() {
       this.fetchData();
@@ -104,7 +149,7 @@ export default {
             </button>
             <ul class="dropdown-menu">
               <li v-for="item in datosCategorias" :key="item">
-                <a class="dropdown-item" href="#">{{ item }}</a>
+                <a class="dropdown-item" href="#" @click="this.filtroCategorias(item)">{{ item }}</a>
               </li>
             </ul>
           </div>
@@ -113,7 +158,7 @@ export default {
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">/100gr</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Calorias</th>
                   <th scope="col">Proteina</th>
@@ -124,7 +169,7 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(dato, index) in datos" :key="index">
+                <tr v-for="(dato, index) in comida" :key="index">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ dato.Nombre }}</td>
                   <td>{{ dato.Calorias }}</td>
@@ -145,12 +190,12 @@ export default {
           <div style="display: flex;">
             <p class="text-start" style="margin-top: 5.5%;">Nombre</p>
             <div class="form-floating" style="margin-left: 3%;">
-              <textarea class="form-control" id="floatingTextarea" style="margin-top: 6.5%;"></textarea>
+              <textarea class="form-control" id="floatingTextarea" style="margin-top: 6.5%;" v-model="nombre"></textarea>
             </div>
 
             <p class="text-start" style="margin-left: 3%; margin-top: 5.5%;">Categoria</p>
             <div class="form-floating" style="margin-left: 3%;">
-              <textarea class="form-control" id="floatingTextarea" style="margin-top: 6.5%;"></textarea>
+              <textarea class="form-control" id="floatingTextarea" style="margin-top: 6.5%;" v-model="categoria"></textarea>
             </div>
           </div>
 
@@ -159,36 +204,36 @@ export default {
               <div class="col">
                 <p class="text-start" style="margin-top: 5%;">Calorias</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="calorias"></textarea>
           </div>
 
           <p class="text-start">Proteina</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="proteina"></textarea>
           </div>
 
           <p class="text-start">Grasa</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="grasa"></textarea>
           </div>
 
           <p class="text-start">H.C.</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="ch"></textarea>
           </div>
 
           <p class="text-start">Fibra</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="fibra"></textarea>
           </div>
 
           <p class="text-start">Extra</p>
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea"></textarea>
+            <textarea class="form-control" id="floatingTextarea" v-model="extra"></textarea>
           </div>
               </div>
               <div class="col">
-                <button type="button" class="btn btn" id="botonAñadirComida">Añadir</button>
+                <button type="button" class="btn btn" id="botonAñadirComida" @click="añadirComida">Añadir</button>
               </div>
             </div>
           </div>
