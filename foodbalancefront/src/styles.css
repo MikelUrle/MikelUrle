@@ -221,3 +221,8 @@ body, html {
       width: 50%;
       background-color: #B2B5E0;
     }
+
+    .no-select {
+      user-select: none; /* Evita la selección de texto */
+      cursor: default; /* Cambia el cursor a su estado por defecto */
+    }

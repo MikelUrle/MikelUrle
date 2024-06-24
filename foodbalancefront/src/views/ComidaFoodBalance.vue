@@ -125,6 +125,30 @@ export default {
           window.location.reload();
         },
 
+        borrarComida(ida){
+          console.log(ida);
+            var js = JSON.stringify({"id": ida});
+            console.log(js);
+            fetch('http://localhost/MikelUrle/foodbalanceback/public/api/BorrarComida', {
+                method: 'DELETE',
+                body: js,
+                mode: 'cors'
+            })
+            .then(function (response) {
+                    return response.text();
+            })
+            .then(data=>{
+                console.log(data);
+            })
+            .catch(error => {
+                // por si hay algun error por los constraints
+                console.log("Erregistro hau beste taula batean erabiltzen ari da, beraz, ezin da ezabatu" + error);
+            });
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
+        },
+
     },
     mounted: function() {
       this.fetchData();
@@ -169,7 +193,7 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(dato, index) in comida" :key="index">
+                <tr v-for="(dato, index) in comida" :key="index" @click="borrarComida(dato.id)" class="no-select">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ dato.Nombre }}</td>
                   <td>{{ dato.Calorias }}</td>
