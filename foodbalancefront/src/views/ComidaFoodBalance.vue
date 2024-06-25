@@ -5,13 +5,7 @@ import HeaderFoodBalance from "../components/HeaderFoodBalance.vue";
 export default {
     data() {
         return {
-          people: [
-            { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@msddo',},
-            { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',},
-            { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',},
-            { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',},
-            { nombre: 'Mark', calorias: 'Otto', proteina: '@mdo', grasa: 'Otto', hc: '@mdo', fibra: '@mdo', extra: '@mdo',}
-          ],
+          borrarComidaID: "",
           datos: [],
           comida: [],
           datosCategorias: []
@@ -149,6 +143,17 @@ export default {
           }, 500);
         },
 
+        abrirPOPUP(id){
+          this.borrarComidaID = id;
+          document.getElementById('fondoOscuro').classList.add('mostrar-fondo');
+          document.getElementById('popupComida').style.display = 'block';
+        },
+
+        cerrar(){
+          document.getElementById('fondoOscuro').classList.remove('mostrar-fondo');
+          document.getElementById('popupComida').style.display = 'none';
+        },
+
     },
     mounted: function() {
       this.fetchData();
@@ -157,8 +162,26 @@ export default {
 </script>
 
 <template>
+  <div id="fondoOscuro" class="fondo-oculto"></div>
   <MenuFoodBalance />
   <HeaderFoodBalance />
+
+  <!-- POPUP -->
+
+  <div id="popupComida" class="ventana-oculta" style="border-radius: 20px;">
+      <div class="contenido-ventana">
+          <div>
+              <label for="mensaje" id="mensajePopupComida"><b>Quieres borrar el alimento?</b></label>
+          </div>
+          <!-- Botones para especificar si se ha devuelto o no el material -->
+          <div class="d-flex align-items-center mt-2">
+              <input id="siComida" type="submit" class="btn añadir btn-lg mt-3"
+                  @click="borrarComida(this.borrarComidaID)" value="Si">
+              <input id="noComida" type="submit" class="btn añadir btn-lg mt-3"
+                  @click="cerrar()" value="No">
+          </div>
+      </div>
+  </div>
 
   <div id="medioComida">
     <div class="container text-center">
@@ -193,7 +216,8 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(dato, index) in comida" :key="index" @click="borrarComida(dato.id)" class="no-select">
+                <!-- <tr v-for="(dato, index) in comida" :key="index" @click="borrarComida(dato.id)" class="no-select"> -->
+                <tr v-for="(dato, index) in comida" :key="index" @click="abrirPOPUP(dato.id)" class="no-select">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ dato.Nombre }}</td>
                   <td>{{ dato.Calorias }}</td>

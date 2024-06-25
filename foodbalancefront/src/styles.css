@@ -5,6 +5,36 @@ body, html {
     background-color: #B2B5E0;
   }
   
+  .fondo-oculto {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 998; 
+  }
+
+  .mostrar-fondo {
+    display: block; 
+  }
+
+  .ventana-oculta {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    padding-top: 4vh;
+    padding-bottom: 2vh;
+    padding-left: 7vh;
+    padding-right: 6vh;
+    background-color: white;
+    z-index: 999;
+  }
+
   /* Header */
   
   #header{
@@ -222,7 +252,27 @@ body, html {
       background-color: #B2B5E0;
     }
 
-    .no-select {
+    .no-select{
       user-select: none; /* Evita la selección de texto */
       cursor: default; /* Cambia el cursor a su estado por defecto */
+    }
+
+    #mensajePopupComida{
+      font-size: larger;
+    }
+
+    #siComida{
+      margin-left: 10%;
+    }
+
+    #siComida:hover{
+      background-color: #9C89B8;
+    }
+
+    #noComida{
+      margin-left: 35%;
+    }
+
+    #noComida:hover{
+      background-color: #9C89B8;
     }
