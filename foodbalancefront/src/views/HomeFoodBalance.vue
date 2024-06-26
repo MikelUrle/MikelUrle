@@ -5,7 +5,9 @@ import HeaderFoodBalance from "../components/HeaderFoodBalance.vue";
 export default {
     data() {
         return {
-
+          datos: [],
+          comida: [],
+          datosCategorias: [],
         };
     },
     components: {
@@ -13,7 +15,70 @@ export default {
       HeaderFoodBalance
     },
     methods:{
+      async sacarCategorias(){
 
+        try {
+
+          const response = await fetch('http://localhost/MikelUrle/foodbalanceback/public/api/CategoriasComida', {
+              method: 'GET',
+              mode: 'cors'
+          });
+
+          const data = await response.json();
+          console.log(data);
+
+          this.datosCategorias = [];
+
+          for (let i = 0; i < data.length; i++) {
+              this.datosCategorias.push(data[i]);
+          }
+
+
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      },
+
+      async fetchData(){
+
+        try {
+          // el fetch que hace la llamada al back para recoger los datos, usando el metodo 'GET' y el modo 'cors'
+          const response = await fetch('http://localhost/MikelUrle/foodbalanceback/public/api/Comida', {
+              method: 'GET',
+              mode: 'cors'
+          });
+
+          const data = await response.json();
+          console.log(data);
+
+          this.datos = [];
+          this.comida = [];
+
+          for (let i = 0; i < data.length; i++) {
+              this.datos.push({
+                  "id": data[i].id,
+                  "Nombre": data[i].Nombre,
+                  "Calorias": data[i].Calorias,
+                  "Proteina": data[i].Proteina,
+                  "Grasa": data[i].Grasa,
+                  "CH": data[i].CH,
+                  "Fibra": data[i].Fibra,
+                  "Extra": data[i].Extra,
+                  "Categoria": data[i].Categoria
+              });
+          }
+
+          this.comida = this.datos;
+
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      },
+
+    },
+    mounted: function() {
+      this.fetchData();
+      this.sacarCategorias();
     }};
 </script>
 
@@ -22,11 +87,10 @@ export default {
   <HeaderFoodBalance />
 
   <div id="medioHome">
-    <select class="form-select" aria-label="Default select example" id="selectorHomeCategoria">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+    <select class="form-select" aria-label="Default select example" id="selectorHomeCategoria" v-model="selectedOption">
+      <option v-for="(categoria, index) in datosCategorias" :key="index" :value="categoria">
+        {{ categoria }}
+      </option>
     </select>
 
     <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome">
