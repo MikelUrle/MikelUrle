@@ -75,6 +75,16 @@ export default {
         }
       },
 
+      filtroCategorias(){
+        this.comida = [];
+        for (let index = 0; index < this.datos.length; index++) {
+          if (this.datos[index].Categoria == this.selectedOption) {
+            this.comida.push(this.datos[index]);
+          }
+        }
+        console.log(this.comida);
+      },
+
     },
     mounted: function() {
       this.fetchData();
@@ -85,9 +95,8 @@ export default {
 <template>
   <MenuFoodBalance />
   <HeaderFoodBalance />
-
   <div id="medioHome">
-    <select class="form-select" aria-label="Default select example" id="selectorHomeCategoria" v-model="selectedOption">
+    <select class="form-select" aria-label="Default select example" id="selectorHomeCategoria" v-model="selectedOption" @change="filtroCategorias">
       <option v-for="(categoria, index) in datosCategorias" :key="index" :value="categoria">
         {{ categoria }}
       </option>
@@ -105,17 +114,9 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Patatas</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Zanahoria</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Lechuga</td>
+        <tr v-for="(dato, index) in comida" :key="index" class="no-select">
+          <th scope="row">{{ index + 1 }}</th>
+          <td>{{ dato.Nombre }}</td>
         </tr>
       </tbody>
     </table>
