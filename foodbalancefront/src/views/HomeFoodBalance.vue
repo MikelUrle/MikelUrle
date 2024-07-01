@@ -5,6 +5,7 @@ import HeaderFoodBalance from "../components/HeaderFoodBalance.vue";
 export default {
     data() {
         return {
+          eleccion: '',
           datos: [],
           comida: [],
           datosCategorias: [],
@@ -85,6 +86,10 @@ export default {
         console.log(this.comida);
       },
 
+      cambioEleccion(texto){
+        this.eleccion = texto;
+      },
+
     },
     mounted: function() {
       this.fetchData();
@@ -102,6 +107,8 @@ export default {
       </option>
     </select>
 
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="eleccionHome" v-model="eleccion">
+
     <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome">
   
     <button type="button" class="btn btn" id="botonAñadirHome">Añadir</button>
@@ -114,7 +121,8 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(dato, index) in comida" :key="index" class="no-select">
+        <!-- @click="" -->
+        <tr v-for="(dato, index) in comida" :key="index" @click="cambioEleccion(dato.Nombre)">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ dato.Nombre }}</td>
         </tr>
