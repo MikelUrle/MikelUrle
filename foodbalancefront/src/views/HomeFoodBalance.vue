@@ -6,9 +6,12 @@ export default {
     data() {
         return {
           eleccion: '',
+          cantidadG: '',
           datos: [],
           comida: [],
           datosCategorias: [],
+          calculo: [],
+          total: [],
         };
     },
     components: {
@@ -90,6 +93,21 @@ export default {
         this.eleccion = texto;
       },
 
+      calculoDeEleccion(dato, cantidad){
+        console.log(this.datos);
+        console.log(dato);
+        console.log(cantidad);
+
+        var multiplicador;
+        multiplicador = cantidad/100;
+        console.log(multiplicador);
+
+        for (let index = 0; index < array.length; index++) {
+
+          
+        }
+      },
+
     },
     mounted: function() {
       this.fetchData();
@@ -109,9 +127,9 @@ export default {
 
     <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="eleccionHome" v-model="eleccion">
 
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome" v-model="cantidadG">
   
-    <button type="button" class="btn btn" id="botonAñadirHome">Añadir</button>
+    <button type="button" class="btn btn" id="botonAñadirHome" @click="calculoDeEleccion(this.eleccion, cantidadG)">Añadir</button>
 
     <table class="table table-hover" id="tablaHome">
       <thead>
