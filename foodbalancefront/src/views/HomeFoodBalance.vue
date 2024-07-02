@@ -7,9 +7,11 @@ export default {
         return {
           eleccion: '',
           cantidadG: '',
+          textareaContent: '',
           datos: [],
           comida: [],
           datosCategorias: [],
+          datoCalculo: [],
           calculo: [],
           total: [],
         };
@@ -102,10 +104,24 @@ export default {
         multiplicador = cantidad/100;
         console.log(multiplicador);
 
-        for (let index = 0; index < array.length; index++) {
 
-          
+        for (let index = 0; index < this.datos.length; index++) {
+          if (this.datos[index].Nombre==dato) {
+            this.datoCalculo = this.datos[index];
+          }
         }
+
+        this.datoCalculo.CH = Math.ceil(this.datoCalculo.CH * multiplicador);
+        this.datoCalculo.Calorias = Math.ceil(this.datoCalculo.Calorias * multiplicador);
+        this.datoCalculo.Fibra = Math.ceil(this.datoCalculo.Fibra * multiplicador);
+        this.datoCalculo.Grasa = Math.ceil(this.datoCalculo.Grasa * multiplicador);
+        this.datoCalculo.Proteina = Math.ceil(this.datoCalculo.Proteina * multiplicador);
+
+        this.calculo.push(this.datoCalculo);
+
+
+        this.textareaContent = this.calculo.join('\n');
+
       },
 
     },
@@ -148,7 +164,7 @@ export default {
     </table>
 
     <div class="form-floating" id="textAreaHome">
-      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px" readonly></textarea>
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" v-model="textareaContent" style="height: 300px" readonly></textarea>
     </div>
 
     <button type="button" class="btn btn" id="botonQuitarHome">
