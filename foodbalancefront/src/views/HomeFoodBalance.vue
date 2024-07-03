@@ -8,6 +8,7 @@ export default {
           eleccion: '',
           cantidadG: '',
           textareaContent: '',
+          textareaContentTotal: '',
           datos: [],
           comida: [],
           datosCategorias: [],
@@ -118,10 +119,45 @@ export default {
         this.datoCalculo.Proteina = Math.ceil(this.datoCalculo.Proteina * multiplicador);
 
         this.calculo.push(this.datoCalculo);
+        console.log(this.calculo);
 
 
-        this.textareaContent = this.calculo.join('\n');
+        let content = '';
+        this.calculo.forEach((item, index) => {
+          Object.entries(item).forEach(([key, value]) => {
+            if (key != "id" && key != "Categoria") {
+              content += `${key}: ${value}\n`;
+            }
 
+          });
+          if (index < this.calculo.length - 1) {
+            content += '----------------------------------------------------\n';
+          }
+        });
+        this.textareaContent = content.trim();
+
+        this.total = [
+          {
+            CH: 0,
+            Calorias: 0,
+            Fibra: 0,
+            Grasa: 0,
+            Proteina: 0
+          }
+        ];
+
+        for (let index = 0; index < this.calculo.length; index++) {
+          
+          this.total[0].CH += this.calculo[index].CH;
+          this.total[0].Calorias += this.calculo[index].Calorias;
+          this.total[0].Fibra += this.calculo[index].Fibra;
+          this.total[0].Grasa += this.calculo[index].Grasa;
+          this.total[0].Proteina += this.calculo[index].Proteina;
+          
+        }
+
+        this.textareaContentTotal = this.total.join('\n');
+        
       },
 
     },
@@ -181,7 +217,7 @@ export default {
     </button>
 
     <div class="form-floating" id="textTotalHome">
-      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 70px" readonly></textarea>
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" v-model="textareaContentTotal" style="height: 70px" readonly></textarea>
     </div>
 
   </div>
