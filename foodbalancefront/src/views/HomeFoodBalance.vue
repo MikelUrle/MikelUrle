@@ -156,8 +156,19 @@ export default {
           
         }
 
-        this.textareaContentTotal = this.total.join('\n');
-        
+
+        // this.textareaContentTotal = this.total.join('\n');
+
+        let contentTotal = '';
+        this.total.forEach((item) => {
+          Object.entries(item).forEach(([key, value]) => {
+            if (key != "id" && key != "Categoria" && key != "Nombre") {
+              contentTotal += `${key}: ${value}\n`;
+            }
+
+          });
+          this.textareaContentTotal = contentTotal.trim();
+        });
       },
 
     },
@@ -217,7 +228,7 @@ export default {
     </button>
 
     <div class="form-floating" id="textTotalHome">
-      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" v-model="textareaContentTotal" style="height: 70px" readonly></textarea>
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" v-model="textareaContentTotal" style="height: 140px" readonly></textarea>
     </div>
 
   </div>
