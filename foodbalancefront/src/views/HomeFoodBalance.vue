@@ -14,6 +14,7 @@ export default {
           datosCategorias: [],
           datoCalculo: [],
           calculo: [],
+          restaCalculo: [],
           total: [],
         };
     },
@@ -97,13 +98,9 @@ export default {
       },
 
       calculoDeEleccion(dato, cantidad){
-        console.log(this.datos);
-        console.log(dato);
-        console.log(cantidad);
 
         var multiplicador;
         multiplicador = cantidad/100;
-        console.log(multiplicador);
 
 
         for (let index = 0; index < this.datos.length; index++) {
@@ -119,7 +116,6 @@ export default {
         this.datoCalculo.Proteina = Math.ceil(this.datoCalculo.Proteina * multiplicador);
 
         this.calculo.push(this.datoCalculo);
-        console.log(this.calculo);
 
 
         let content = '';
@@ -135,6 +131,7 @@ export default {
           }
         });
         this.textareaContent = content.trim();
+
 
         this.total = [
           {
@@ -156,9 +153,6 @@ export default {
           
         }
 
-
-        // this.textareaContentTotal = this.total.join('\n');
-
         let contentTotal = '';
         this.total.forEach((item) => {
           Object.entries(item).forEach(([key, value]) => {
@@ -169,6 +163,43 @@ export default {
           });
           this.textareaContentTotal = contentTotal.trim();
         });
+      },
+      validarNumeros(event) {
+        const input = event.target.value;
+
+        const numeros = input.replace(/[^0-9]/g, '');
+        event.target.value = numeros;
+      },
+
+      botonBorrarTodo(){
+        window.location.reload();
+      },
+
+      botonBorrarUltimo(){
+        // console.log(this.calculo);
+
+        for (let index = 0; index < (this.calculo.length-1); index++) {
+          this.restaCalculo.push(this.calculo[index]);
+        }
+
+        this.calculo = this.restaCalculo;
+
+        console.log(this.calculo);
+
+
+        // let contentNew = '';
+        // this.calculo.forEach((item, index) => {
+        //   Object.entries(item).forEach(([key, value]) => {
+        //     if (key != "id" && key != "Categoria") {
+        //       contentNew += `${key}: ${value}\n`;
+        //     }
+
+        //   });
+        //   if (index < this.calculo.length - 1) {
+        //     contentNew += '----------------------------------------------------\n';
+        //   }
+        // });
+        // this.textareaContent = contentNew.trim();
       },
 
     },
@@ -187,10 +218,11 @@ export default {
         {{ categoria }}
       </option>
     </select>
+    
 
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="eleccionHome" v-model="eleccion">
+    <input type="text" class="form-control" placeholder="Nombre del Alimento" aria-label="Recipient's username" aria-describedby="basic-addon2" id="eleccionHome" v-model="eleccion" readonly>
 
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome" v-model="cantidadG">
+    <input type="text" class="form-control" placeholder="Gramos" aria-label="Recipient's username" aria-describedby="basic-addon2" id="gramosHome" v-model="cantidadG" @input="validarNumeros">
   
     <button type="button" class="btn btn" id="botonAñadirHome" @click="calculoDeEleccion(this.eleccion, cantidadG)">Añadir</button>
 
@@ -202,7 +234,6 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <!-- @click="" -->
         <tr v-for="(dato, index) in comida" :key="index" @click="cambioEleccion(dato.Nombre)">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ dato.Nombre }}</td>
@@ -214,14 +245,14 @@ export default {
       <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" v-model="textareaContent" style="height: 300px" readonly></textarea>
     </div>
 
-    <button type="button" class="btn btn" id="botonQuitarHome">
+    <button type="button" class="btn btn" id="botonQuitarHome" @click="botonBorrarUltimo">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-minus" viewBox="0 0 16 16">
         <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"/>
         <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
       </svg>  
     </button>
 
-    <button type="button" class="btn btn" id="botonQuitarTodoHome">
+    <button type="button" class="btn btn" id="botonQuitarTodoHome" @click="botonBorrarTodo">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
       </svg>

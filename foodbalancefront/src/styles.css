@@ -192,14 +192,14 @@ body, html {
 
     #botonQuitarHome{
       position: fixed;
-      margin-top: 23%;
+      margin-top: 22%;
       margin-left: 60%;
       background-color: #B2B5E0;
     }
 
     #botonQuitarTodoHome{
       position: fixed;
-      margin-top: 23%;
+      margin-top: 22%;
       margin-left: 52%;
       background-color: #B2B5E0;
     }

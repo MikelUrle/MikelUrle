@@ -47,7 +47,6 @@ export default {
           }
 
           this.comida = this.datos;
-          console.log(this.comida);
 
         } catch (error) {
           console.error('Error al obtener los datos:', error);
