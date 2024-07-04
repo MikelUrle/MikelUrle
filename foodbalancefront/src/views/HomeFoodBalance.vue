@@ -176,30 +176,71 @@ export default {
       },
 
       botonBorrarUltimo(){
-        // console.log(this.calculo);
 
-        for (let index = 0; index < (this.calculo.length-1); index++) {
-          this.restaCalculo.push(this.calculo[index]);
+        this.restaCalculo = [];
+
+        if (this.calculo.length >= 1) {
+          for (let index = 0; index < (this.calculo.length-1); index++) {
+            this.restaCalculo.push(this.calculo[index]);
+          }
+        } else {
+          this.calculo = [];
+          this.textareaContent = "";
         }
+
 
         this.calculo = this.restaCalculo;
 
-        console.log(this.calculo);
 
+        let contentNew = '';
+        this.calculo.forEach((item, index) => {
+          Object.entries(item).forEach(([key, value]) => {
+            if (key != "id" && key != "Categoria") {
+              contentNew += `${key}: ${value}\n`;
+            }
 
-        // let contentNew = '';
-        // this.calculo.forEach((item, index) => {
-        //   Object.entries(item).forEach(([key, value]) => {
-        //     if (key != "id" && key != "Categoria") {
-        //       contentNew += `${key}: ${value}\n`;
-        //     }
+          });
+          if (index < this.calculo.length - 1) {
+            contentNew += '----------------------------------------------------\n';
+          }
+        });
+        this.textareaContent = contentNew.trim();
 
-        //   });
-        //   if (index < this.calculo.length - 1) {
-        //     contentNew += '----------------------------------------------------\n';
-        //   }
-        // });
-        // this.textareaContent = contentNew.trim();
+        this.total = [
+          {
+            CH: 0,
+            Calorias: 0,
+            Fibra: 0,
+            Grasa: 0,
+            Proteina: 0
+          }
+        ];
+
+        for (let index = 0; index < this.calculo.length; index++) {
+          
+          this.total[0].CH += this.calculo[index].CH;
+          this.total[0].Calorias += this.calculo[index].Calorias;
+          this.total[0].Fibra += this.calculo[index].Fibra;
+          this.total[0].Grasa += this.calculo[index].Grasa;
+          this.total[0].Proteina += this.calculo[index].Proteina;
+          
+        }
+
+        this.textareaContentTotal = "";
+        if (this.total[0].Calorias == 0) {
+          this.textareaContentTotal = "";
+        } else {
+        let contentTotal = '';
+        this.total.forEach((item) => {
+          Object.entries(item).forEach(([key, value]) => {
+            if (key != "id" && key != "Categoria" && key != "Nombre") {
+              contentTotal += `${key}: ${value}\n`;
+            }
+
+          });
+          this.textareaContentTotal = contentTotal.trim();
+        });
+        }
       },
 
     },

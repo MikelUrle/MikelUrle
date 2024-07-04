@@ -210,7 +210,7 @@ export default {
                   <th scope="col">Calorias</th>
                   <th scope="col">Proteina</th>
                   <th scope="col">Grasa</th>
-                  <th scope="col">C.H.</th>
+                  <th scope="col">CH</th>
                   <th scope="col">Fibra</th>
                   <th scope="col">Extra</th>
                 </tr>
@@ -265,7 +265,7 @@ export default {
             <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="grasa"></textarea>
           </div>
 
-          <p class="text-start">H.C.</p>
+          <p class="text-start">CH</p>
           <div class="form-floating">
             <textarea class="form-control" id="floatingTextarea" @input="validarNumeros" v-model="ch"></textarea>
           </div>
