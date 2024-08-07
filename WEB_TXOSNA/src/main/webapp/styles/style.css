@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+header {
+	background: red;
+	margin-bottom: -20px;
+	height: 100px;
+}
+
+main {
+	margin-top: 35px;
+	min-height: 435px;
+}
+
+footer {
+	background-color: red;
+	
+	height: 48px; 
+}
+
+#prueba {
+	font-size: 40px;
+	margin-left: 15px;
+}
+
+#textoFooter {
+	padding: 10px;
+	text-align: center;
+}
+
+#areaPedidos {
+	height: 500px;
+}
+
+#botonBorrarPedido {
+	margin-top: 20px;
+	margin-left: 220px;
+	
+}
+
+
+
